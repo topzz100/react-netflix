@@ -1,0 +1,72 @@
+.navbar{
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 0.9rem;
+  background: linear-gradient(0deg, transparent 0%, rgba(0,0,0,0.5) 50%);
+  z-index: 999;
+  transition: all 0.3s ease-in-out;
+  &.scroll{
+    background-color: var(--main-color);
+  }
+  .fa-solid{
+    color: var(--font-color);
+  }
+  .left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+      width: 150px;
+    }
+    span{
+      margin-left: 20px;
+    }
+    
+  }
+  .right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      object-fit: cover;
+    }
+    span{
+      margin-right: 15px;
+    }
+    .options{
+      padding: 10px;
+      .drop-down{
+        display: none;
+      }
+      &:hover{
+        position: relative;
+       
+        .drop-down{
+          display: flex;
+          flex-direction: column;
+          background-color: black;
+          position: absolute;
+          border-radius: 5px;
+          //right: 50%;
+          // right: 0;
+          // top: 20px;
+          transform: translateX(-50%);
+          span{
+            padding: 7px;
+            font-size: 0.8rem;
+          }
+          
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.featured{
+  height: 90vh;
+  position: relative;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .featured-about{
+    position: absolute;
+    width: 500px;
+    top: 40%;
+    left: 50px;
+    img{
+      width: 100%;
+      object-fit: cover;
+    }
+    .desc{
+      font-size: 0.9rem;
+      margin-top: 15px;
+    }
+    .buttons{
+      margin-top: 15px;
+      button{
+        padding: 10px 12px;
+        border-radius: 3px;
+        border: none;
+        margin-right: 5px;
+        font-weight: 600;
+        font-size: 1rem;
+        span{
+          margin-left: 10px;
+        }
+        &.play{
+          background-color: var(--font-color);
+          color: var(--main-color);
+        }
+        &.info{
+          background-color: grey;
+          color: var(--font-color);
+        }
+      }
+    }
+  }
+}
