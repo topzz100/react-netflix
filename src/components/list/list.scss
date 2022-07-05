@@ -1,0 +1,23 @@
+.list{
+  margin-top: 20px;
+  width: 100%;
+  h4{
+    margin-left: 50px;
+    margin-bottom: 10px;
+  }
+  .container{
+    overflow-x: hidden;
+    width: 100%;
+    .wrapper{
+      display: flex;
+      //overflow-x: hidden;
+      transform: translateX(100px);
+      
+      .listItem{
+        width: 225px;
+        height: 150px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
