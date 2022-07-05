@@ -6,12 +6,34 @@
     margin-bottom: 10px;
   }
   .container{
-    overflow-x: hidden;
     width: 100%;
-    .wrapper{
+    position: relative;
+    .fa-solid{
+      font-size: 70px;
+      width: 50px;
+      height: 150px;
+      background-color: rgb(0,0,0,0.5);
       display: flex;
+      align-items: center;
+      position: absolute;
+      z-index: 333;
+      top: 0;
+      //transform: translateX(500);
+      &.left{
+        left: 0;
+      }
+      &.right{
+        right:0;
+      }
+      
+    }
+    .wrapper{
+      transition: all 0.3s ease;
       //overflow-x: hidden;
-      transform: translateX(100px);
+      display: flex;
+      margin-left: 50px;
+      //transform: translateX(100px);
+      //overflow-x: hidden;
       
       .listItem{
         width: 225px;
@@ -20,4 +42,5 @@
       }
     }
   }
+  overflow-x: hidden;
 }
