@@ -6,7 +6,7 @@
     margin-bottom: 10px;
   }
   .container{
-    width: 100%;
+    //width: 100%;
     position: relative;
     .fa-solid{
       font-size: 70px;
@@ -32,14 +32,11 @@
       //overflow-x: hidden;
       display: flex;
       margin-left: 50px;
+      width: max-content;
+      //position: relative;
       //transform: translateX(100px);
       //overflow-x: hidden;
-      
-      .listItem{
-        width: 225px;
-        height: 150px;
-        margin-right: 10px;
-      }
+   
     }
   }
   overflow-x: hidden;

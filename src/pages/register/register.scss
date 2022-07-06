@@ -1,0 +1,77 @@
+.register{
+  width: 100%;
+  height: 100vh;
+  background: url(https://browsecat.net/sites/default/files/netflix-background-128505-385441-537479.png);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 50px;
+    img{
+      width: 150px;
+    }
+    button{
+      background-color: red;
+      color: var(--font-color);
+      padding: 7px 12px;
+      border-radius: 5px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  }
+  .center{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--font-color);
+    h3{
+      font-size: 2.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    h5{
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    p{
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .enter-box{
+      background-color: var(--font-color);
+      height: 40px;
+      width: 500px;
+      display: flex;
+      align-items: center;
+      input{
+        flex: 9;
+        height: 100%;
+        border: 1px solid grey;
+        outline: none;
+        padding: 10px;
+      }
+      button{
+        flex: 3;
+        height: 100%;
+        border: none;
+        background-color: red;
+        color: var(--font-color);
+        font-size: 1rem;
+      }
+    }
+
+  }
+}

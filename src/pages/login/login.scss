@@ -1,0 +1,69 @@
+.login{
+  width: 100%;
+  height: 100vh;
+  background: url(https://browsecat.net/sites/default/files/netflix-background-128505-385441-537479.png);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  .top{
+    margin-left: 50px;
+    height: 70px;
+    img{
+      width: 150px;
+    }
+  }
+  .center{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    form{
+      background-color: var(--main-color);
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      width: 400px;
+      border-radius: 5px;
+      h4{
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: var(--font-color);
+      }
+      input{
+        width: 100%;
+        height: 45px;
+        background-color: grey;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        color: white;
+        margin-bottom: 15px;
+        outline: none;
+        &::placeholder{
+          color: lightgray;
+        }
+      }
+      button{
+        width: 100%;
+        height: 45px;
+        background-color: red;
+        color: var(--font-color);
+        border-radius: 5px;
+        border: none;
+        font-weight: 500;
+        //margin-bottom: 10px;
+      }
+      p{
+        font-size: 0.8rem;
+        color: var(--font-color);
+        margin-top: 10px;
+      }
+    }
+  }
+}
