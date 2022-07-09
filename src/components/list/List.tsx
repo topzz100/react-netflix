@@ -34,12 +34,12 @@ const List = () => {
           <ListItem/>
           <ListItem/>
           <ListItem/>
-          {/* <ListItem/>
           <ListItem/>
           <ListItem/>
           <ListItem/>
           <ListItem/>
-          <ListItem/> */}
+          <ListItem/>
+          <ListItem/>
         </div>
         {count !== 5 && 
           <i className="fa-solid fa-chevron-right right" onClick={() => handleSlide('right')}></i>

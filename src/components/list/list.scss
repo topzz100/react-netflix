@@ -1,6 +1,8 @@
 .list{
+  //overflow-x: hidden;
   margin-top: 20px;
   width: 100%;
+  //overflow-x: hidden;
   h4{
     margin-left: 50px;
     margin-bottom: 10px;
@@ -8,6 +10,7 @@
   .container{
     //width: 100%;
     position: relative;
+    //overflow: hidden;
     .fa-solid{
       font-size: 70px;
       width: 50px;
@@ -29,15 +32,25 @@
     }
     .wrapper{
       transition: all 0.3s ease;
-      //overflow-x: hidden;
       display: flex;
       margin-left: 50px;
       width: max-content;
-      //position: relative;
-      //transform: translateX(100px);
+      position: relative;
+      transform: translateX(0);
       //overflow-x: hidden;
-   
+    //  .listItem{
+    //   width: 230px;
+    //   height: 140px;
+    //   background-color: white;
+    //   &:hover{
+    //     position: absolute;
+    //     height: 200px;
+    //     width: 300px;
+    //     top: -150px;
+
+    //     //z-index: 555;
+    //   }
+    //  }
     }
   }
-  overflow-x: hidden;
 }
