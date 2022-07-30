@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './navbar.scss'
 
 const Navbar = () => {
@@ -12,9 +13,15 @@ const Navbar = () => {
       <div className="left">
         <img src="https://cloudfront-us-east-1.images.arcpublishing.com/gray/3HCWZMP7PFGY3OJJPFHIX5O2VI.png" alt="" />
         <div className="nav-menu">
-          <span>Homepage</span>
-          <span>Series</span>
-          <span>Movies</span>
+          <Link to={'/'}>
+            <span>Homepage</span>
+          </Link>
+          <Link to={'/series'}>
+            <span>Series</span>
+          </Link>
+          <Link to={'/movies'}>
+            <span>Movies</span>
+          </Link>
           <span>New and Popular</span>
           <span>My List</span>        
         </div>

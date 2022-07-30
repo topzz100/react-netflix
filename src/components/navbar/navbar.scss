@@ -17,6 +17,10 @@
   .fa-solid{
     color: var(--font-color);
   }
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
   .left{
     display: flex;
     justify-content: center;
