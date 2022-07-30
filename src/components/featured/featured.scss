@@ -29,10 +29,16 @@
     object-fit: cover;
   }
   .featured-about{
+    background-color: rgb(0, 0, 0, 0.3);
     position: absolute;
     width: 500px;
     top: 40%;
-    left: 50px;
+    left: 0;
+    padding: 20px 50px;
+    .title{
+      color: white;
+      font-size: 2rem;
+    }
     img{
       width: 100%;
       object-fit: cover;

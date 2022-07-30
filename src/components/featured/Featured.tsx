@@ -1,9 +1,37 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { fetchMovie, fetchMovies, Movie } from '../../API';
+import { API_URL, BACKDROP_SIZE, IMAGE_BASE_URL, KEY } from '../../config';
 import './featured.scss'
 
 type Props = {
   type: string;
 }
 const Featured: React.FC<Props> = ({type}) => {
+
+  const [movie, setMovie] = useState<Movie | null>(null)
+  console.log(type)
+
+// https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
+
+  const getMovie= async() =>{
+    try{
+      const data =await fetchMovies(type, 1)
+       const id = data.results[0].id
+       console.log(data)
+       const res = await axios.get(type ==='movies' ? `${API_URL}movie/${id}?api_key=${KEY}&language=en-US`: `${API_URL}tv/${id}?api_key=${KEY}&language=en-US`)
+       setMovie(res.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+  // console.log(movie)
+  useEffect(() => {
+    getMovie()
+    // singleMovie()
+  }, [type])
+  // console.log(movie && movie.id)
   return (
     <div className='featured'>
       {
@@ -29,11 +57,22 @@ const Featured: React.FC<Props> = ({type}) => {
           </select>
         </div>
       }
-      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="" />
+      {/* <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="" /> */}
+      {
+        movie != null &&
+      <img src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}/${movie.backdrop_path}`} alt="" />
+      }
       <div className="featured-about">
-        <img src="https://upload.wikimedia.org/wikipedia/fr/d/d1/Logo_Matrix_Resurrections.png" alt="" />
+        {/* <img src="https://upload.wikimedia.org/wikipedia/fr/d/d1/Logo_Matrix_Resurrections.png" alt="" /> */}
+        <h3 className='title'>
+          {
+            movie && (type==='movies'? movie.original_title: movie.original_name)
+          }
+        </h3>
         <span className="desc">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam numquam laudantium obcaecati neque, debitis, voluptatem quam sapiente odio facere, facilis atque! Vero provident ducimus accusantium quod tenetur nobis reprehenderit cumque!
+          {
+            movie && movie.overview
+          }
         </span>
         <div className="buttons">
           <button className='play'>
