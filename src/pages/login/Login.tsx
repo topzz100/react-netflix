@@ -1,6 +1,30 @@
 import './login.scss'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
-const Login = () => {
+const Login = () => {  
+  const emailRef = useRef<HTMLInputElement|null>(null)
+  const passwordRef = useRef<HTMLInputElement|null>(null)
+  const navigate = useNavigate()
+
+  const handleLogin = (e: any) => {
+    e.preventDefault()
+    if(emailRef.current && passwordRef.current){  
+      const auth = getAuth();
+      signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user)
+        navigate('/')
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error)
+      });
+    }
+  }
   return (
     <div className='login'>
       <div className="top">
@@ -11,10 +35,12 @@ const Login = () => {
           <h4>
             Sign In
           </h4>
-          <input type="text" placeholder='email or phone number'/>
-          <input type="password" name="" id="" placeholder='password'/>
-          <button>Sign In</button>
-          <p>New to Netflix? <b>Sign up now.</b></p>
+            <input type="text" placeholder='email or phone number' ref={emailRef}/>
+          <input type="password" name="" id="" placeholder='password' ref={passwordRef}/>
+          <button onClick={handleLogin}>Sign In</button>
+         
+          
+          <p>NLw to Netflix? <b>Sign up now.</b></p>
           <p>This page is protected by Google reCAPTCHA to ensure you are not a bot. <b>Learn more</b></p>
         </form>
       </div>

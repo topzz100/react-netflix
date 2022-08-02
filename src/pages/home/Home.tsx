@@ -12,9 +12,9 @@ const Home = () => {
     <div className='home'>
       <Navbar/>
       <Featured type={type}/> 
-      <List/>
-      <List/>
-      <List/>
+      <List title='Popular on Netflix' type= {type} category ='popular'/>
+      <List title='Trending' type = {type} category ='trending' />
+      {/* <List/> */}
       
     </div>
   )

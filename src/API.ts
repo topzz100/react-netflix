@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  API_URL, KEY, POPULAR_MOVIES_URL, POPULAR_SERIES_URL, 
+  API_URL, KEY, LATEST_MOVIES_URL, LATEST_SERIES_URL, POPULAR_MOVIES_URL, POPULAR_SERIES_URL, TOP_RATED_MOVIES, TOP_RATED_SERIES, 
 } from './config';
 
 export type Movie = {
@@ -25,13 +25,18 @@ export type Movies = {
   total_results: number;
 };
 
-export const fetchMovies = async(type : String, page : number): Promise<Movies>=> {
+export const fetchPopular = async(type : String, page : number): Promise<Movies>=> {
 
     const res = await axios.get(type ==='movies' ? `${POPULAR_MOVIES_URL}&page=${page}`: `${POPULAR_SERIES_URL}&page=${page}`)
     return res.data
  
 }
+export const fetchTrending = async(type : String, page : number): Promise<Movies>=> {
 
+    const res = await axios.get(type ==='movies' ? `${TOP_RATED_MOVIES}&page=${page}`: `${TOP_RATED_SERIES}&page=${page}`)
+    return res.data
+ 
+}
 export const fetchMovie = async(movieId: number) => {
 
   return await axios.get(`https://api.themoviedb.org/3/tv/${movieId}?api_key=${KEY}>>&language=en-US`)
