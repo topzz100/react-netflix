@@ -1,35 +1,55 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { fetchMovie, fetchPopular, Movie } from '../../API';
+import { toast } from 'react-toastify';
+import { fetchPopular, Movie } from '../../API';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { API_URL, BACKDROP_SIZE, IMAGE_BASE_URL, KEY } from '../../config';
+import { mostPopular, popularMovies, reset, selectType } from '../../features/movie/movieSlice';
 import './featured.scss'
 
 type Props = {
   type: string;
 }
-const Featured: React.FC<Props> = ({type}) => {
-
+type Video = {
+  key: String
+}
+const Featured = () => {
+  const dispatch = useAppDispatch()
   const [movie, setMovie] = useState<Movie | null>(null)
+  const type = useAppSelector(selectType)
+  const {isError, isSuccess, isLoading, message, popularMovie} = useAppSelector(state => state.movie)
+  useEffect(() => {
+    dispatch(mostPopular(type))
+  },[type])
 
-
+  useEffect(() => {
+     if (isError) {
+       toast.error(message)
+     }
+    if(isSuccess){
+      setMovie(popularMovie)
+      //  console.log(movie)
+    }
+    
+  }, [ popularMovie ]) 
 // https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
 
-  const getMovie= async() =>{
-    try{
-      const data =await fetchPopular(type, 1)
-       const id = data.results[0].id
-       const res = await axios.get(type ==='movies' ? `${API_URL}movie/${id}?api_key=${KEY}&language=en-US`: `${API_URL}tv/${id}?api_key=${KEY}&language=en-US`)
-       setMovie(res.data)
-    }catch(err){
-      console.log(err)
-    }
-  }
+  // const getMovie= async() =>{
+  //   try{
+  //     const data =await fetchPopular(type, 1)
+  //      const id = data.results[0].id
+  //      const res = await axios.get(type ==='movies' ? `${API_URL}movie/${id}?api_key=${KEY}&language=en-US`: `${API_URL}tv/${id}?api_key=${KEY}&language=en-US`)
+  //      res.data && setMovie(res.data)
+  //   }catch(err){
+  //     console.log(err)
+  //   }
+  // }
 
-  //  console.log(movie)
-  useEffect(() => {
-    getMovie()
-    // singleMovie()
-  }, [type])
+  // //console.log(movie)
+
+  // useEffect(() => {
+  //   getMovie()
+  // }, [type])
   // console.log(movie && movie.id)
   return (
     <div className='featured'>
@@ -58,14 +78,14 @@ const Featured: React.FC<Props> = ({type}) => {
       }
       {/* <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="" /> */}
       {
-        movie != null &&
-      <img src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}/${movie.backdrop_path}`} alt="" />
+        
+      <img src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}/${movie?.backdrop_path}`} alt="" />
       }
       <div className="featured-about">
         {/* <img src="https://upload.wikimedia.org/wikipedia/fr/d/d1/Logo_Matrix_Resurrections.png" alt="" /> */}
         <h3 className='title'>
           {
-            movie && (type==='movies'? movie.original_title: movie.original_name)
+            type==='movies'? movie?.original_title: movie?.original_name
           }
         </h3>
         <span className="desc">

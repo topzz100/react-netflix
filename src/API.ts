@@ -17,6 +17,10 @@ export type Movie = {
   budget: number;
   runtime: number;
   revenue: number;
+  release_date: string;
+  first_air_date: string;
+  episode_run_time: number;
+  genres: {name: string, id: number}[]
 };
 export type Movies = {
   page: number;
