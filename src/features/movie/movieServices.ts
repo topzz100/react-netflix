@@ -52,6 +52,7 @@ const fetchTrending = async(type : String)=> {
     const res = await axios.get( `${TOP_RATED_SERIES}&page=1`)
     return res.data.results.slice(10)
   }
+
  
 }
 const fetchMovie = async( type: String, movieId: number) => {

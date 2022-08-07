@@ -7,6 +7,9 @@ const Navbar = () => {
   window.onscroll = () => {
     setIscroll(window.pageYOffset === 0 ? false : true)
    }
+   const handleClicK = () => {
+    window.location.reload()
+   }
    console.log(isScroll)
   return (
     <div className={isScroll? 'navbar scroll' : 'navbar'}>
@@ -14,7 +17,7 @@ const Navbar = () => {
         <img src="https://cloudfront-us-east-1.images.arcpublishing.com/gray/3HCWZMP7PFGY3OJJPFHIX5O2VI.png" alt="" />
         <div className="nav-menu">
           <Link to={'/'}>
-            <span>Homepage</span>
+            <span onClick={handleClicK}>Homepage</span>
           </Link>
           <Link to={'/series'}>
             <span>Series</span>

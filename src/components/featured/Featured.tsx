@@ -13,6 +13,7 @@ type Props = {
 type Video = {
   key: String
 }
+
 const Featured = () => {
   const dispatch = useAppDispatch()
   const [movie, setMovie] = useState<Movie | null>(null)

@@ -14,11 +14,12 @@ type Video = {
 type Props= {
   id : number;
 //  getVideo: Promise<Video>;
+// getMovie : Promise<Movie>
  
   
 }
 
-const ListItem: React.FC<Props> = ({id}) => {
+const ListItem: React.FC<Props> = ({id }) => {
   // const [video, setVideo] = useState<Video>()
   const [details, setDetails] = useState<Movie | null>()
   const [count , setCount] = useState(0)
@@ -47,7 +48,14 @@ const ListItem: React.FC<Props> = ({id}) => {
   // console.log(id)
 //   const fetchMovie = async( type: String, movieId: number) => {
 const fetchMovie = async( type: String, movieId: number) => {
-
+  if(type === ''){
+    try{
+      const res = await axios.get( `${API_URL}movie/${movieId}?api_key=${KEY}&language=en-US`) 
+      setDetails(res.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
   if(type === 'movies'){
     try{
       const res = await axios.get( `${API_URL}movie/${movieId}?api_key=${KEY}&language=en-US`)
@@ -64,10 +72,19 @@ const fetchMovie = async( type: String, movieId: number) => {
       console.log(err)
     }
   }
+  else{
+     try{
+      const res = await axios.get( `${API_URL}movie/${movieId}?api_key=${KEY}&language=en-US`)
+      setDetails(res.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
 }
-useEffect(()=> {
-  fetchMovie(type, id)
-},[type])
+ useEffect(()=> {
+   fetchMovie(type, id)
+ },[type, details, id])
+
 //   const res = await axios.get(type ==='movies' ? `${API_URL}movie/${movieId}?api_key=${KEY}&language=en-US`: `${API_URL}tv/${movieId}?api_key=${KEY}&language=en-US`)
 //   return res.data
 // }
@@ -83,14 +100,14 @@ useEffect(()=> {
     
   //   // data && setVideo(data)
   // }
-  // const getDetails = async() => {
-  //   try{
-  //     const data = await getMovie
-  //     data && setDetails(data)
-  //   }catch(err){
-  //     console.log(err)
-  //   }
-  // }
+  //  const getDetails = async() => {
+  //    try{
+  //      const data = await getMovie
+  //      data && setDetails(data)
+  //    }catch(err){
+  //      console.log(err)
+  //    }
+  //  }
 
   // const handleHover = () => [
   //   setCount(1)
@@ -99,9 +116,9 @@ useEffect(()=> {
   //   handleHover
   // },[])
   // useEffect(()=> {
-  //   // getData()
-  //   getDetails()
-  // }, [type])
+  //    // getData()
+  //    getDetails()
+  //  }, [type])
 
   
 
@@ -115,16 +132,7 @@ useEffect(()=> {
        <img src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}/${details?.backdrop_path}`} alt="" />
       
         {/* <video src="/assets/dance.mp4" autoPlay muted loop></video> */}
-        {/* <video src="https://www.youtube.com/embed/T8KpoU4mUPU" autoPlay muted loop></video> */}
-        {/* {
-          video &&
-        <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${video.key}`} title="YouTube video player" frameBorder="0"
-         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  
-         allowFullScreen></iframe>
-        // <video src="/assets/dance.mp4" autoPlay muted loop></video>
-        // <video src={`https://www.youtube.com/embed/${video.key}`} autoPlay muted loop></video> 
-        
-        } */}
+       
         <div className="more">
           <div className="icons">
             <i className="fa-solid fa-play icon" ></i>
@@ -137,8 +145,8 @@ useEffect(()=> {
               ( 
              
               <>
-            <h5>{details?.original_title}</h5>
-          <div className="info">
+                <h5>{details?.original_title}</h5>
+                <div className="info">
                   <span >{details?.runtime} minutes</span>
                   {/* <span>{details?.release_date.substring(0, 4)}</span> */}
                 </div>
@@ -148,10 +156,10 @@ useEffect(()=> {
               
                 <>
                   <h5>{details?.original_name}</h5>
-                <div className="info">
-                  <span>{details?.episode_run_time} minutes</span>
-                  {/* <span >{details?.first_air_date.slice(0,4)}</span> */}
-                </div>
+                  <div className="info">
+                    <span>{details?.episode_run_time} minutes</span>
+                    {/* <span >{details?.first_air_date.slice(0,4)}</span> */}
+                  </div>
                 </>
               )
             

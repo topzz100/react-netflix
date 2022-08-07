@@ -10,7 +10,7 @@ import { toast } from 'react-toastify'
 
 type Props={
   title: string,
-  category: String
+  category: String,
 }
 type Video = {
 key : number
@@ -50,7 +50,7 @@ const List: React.FC<Props> = ({title, category}) => {
       //  return () => {
       //     dispatch(reset())
       //  }
-  }, [moviesPopular, category]) 
+  }, [type, moviesPopular, category]) 
   // const getMovies = async() => {
   //   try{
   //     if(category === 'popular'){
@@ -66,16 +66,47 @@ const List: React.FC<Props> = ({title, category}) => {
   //     console.log(err)
   //   }
   // }
+//   const getMovie = async(  movieId: number) => {
 
-  //  const getMovie= async(id: number)  =>{
-  //   try{
+//   if(type === 'movies'){
+//     try{
+//       const res = await axios.get( `${API_URL}movie/${movieId}?api_key=${KEY}&language=en-US`)
+//       return res.data
+//     }catch(err){
+//       console.log(err)
+//     }
+//   }
+//   if(type === 'series'){
+//     try{
+//       const res = await axios.get(`${API_URL}tv/${movieId}?api_key=${KEY}&language=en-US`)
+//       return res.data
+//     }catch(err){
+//       console.log(err)
+//     }
+//   }
+//   else{
+//      try{
+//       const res = await axios.get( `${API_URL}movie/${movieId}?api_key=${KEY}&language=en-US`)
+//       return res.data
+//     }catch(err){
+//       console.log(err)
+//     }
+//   }
+// }
+
+  //   const getMovie= async(id: number)  =>{
+  //     if(type === ''){
+  //       const res = await axios.get( `${API_URL}movie/${id}?api_key=${KEY}&language=en-US`)
+  //        return res.data
+  //     }
+  //    try{
       
-  //      const res = await axios.get(type ==='movies' ? `${API_URL}movie/${id}?api_key=${KEY}&language=en-US`: `${API_URL}tv/${id}?api_key=${KEY}&language=en-US`)
-  //       return res.data
-  //   }catch(err){
-  //     console.log(err)
-  //   }
-  // }
+  //       const res = await axios.get(type ==='movies' ? `${API_URL}movie/${id}?api_key=${KEY}&language=en-US`: `${API_URL}tv/${id}?api_key=${KEY}&language=en-US`)
+  //        return res.data
+  //    }catch(err){
+  //      console.log(err)
+  //    }
+  //  }
 
 
   // const getVideo = async(id: number): Promise<Video> => {
@@ -117,7 +148,7 @@ const List: React.FC<Props> = ({title, category}) => {
           { 
             movies && movies.slice(0,10).map((movie) => (
               <ListItem key={movie.id} id={movie.id} 
-              // getMovie={getMovie(movie.id)} 
+              //  getMovie={getMovie(movie.id)} 
               // getVideo = {getVideo(movie.id)} 
               // type = {type}
               />
