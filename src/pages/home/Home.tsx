@@ -23,7 +23,7 @@ const Home = () => {
       <Navbar/>
       <Featured /> 
       <List  title='Popular on Netflix' category ='popular'/>
-      {/* <List title='Trending' category ='trending' />  */}
+       <List title='Trending' category ='trending' /> 
       {/* <List title='Popular on Netflix' category ='popular'/>  */}
       {/* <List/> */}
       

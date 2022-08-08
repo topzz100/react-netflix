@@ -25,12 +25,6 @@ const List: React.FC<Props> = ({title, category}) => {
   const {isError, isSuccess, isLoading, message,trending, movies: moviesPopular} = useAppSelector(state => state.movie)
 
   useEffect(() => {
-    // if(category === 'popular'){
-    //   dispatch(popularMovies(type))
-    // }
-    // if(category === 'trending'){
-    //   dispatch(trendingMovies(type))
-    // }
     dispatch(trendingMovies(type))
     dispatch(popularMovies(type))
   },[type, category])
@@ -47,77 +41,9 @@ const List: React.FC<Props> = ({title, category}) => {
         setMovies(trending)
       }
     }
-      //  return () => {
-      //     dispatch(reset())
-      //  }
+   
   }, [type, moviesPopular, category]) 
-  // const getMovies = async() => {
-  //   try{
-  //     if(category === 'popular'){
-  //       const data = await fetchPopular(type, 1)
-  //       setMovies(data.results)
-  //      }
-  //    if(category === 'trending'){
-  //       const data = await fetchTrending(type, 1)
-  //       setMovies(data.results)
-  //    }
-     
-  //   }catch(err){
-  //     console.log(err)
-  //   }
-  // }
-//   const getMovie = async(  movieId: number) => {
 
-//   if(type === 'movies'){
-//     try{
-//       const res = await axios.get( `${API_URL}movie/${movieId}?api_key=${KEY}&language=en-US`)
-//       return res.data
-//     }catch(err){
-//       console.log(err)
-//     }
-//   }
-//   if(type === 'series'){
-//     try{
-//       const res = await axios.get(`${API_URL}tv/${movieId}?api_key=${KEY}&language=en-US`)
-//       return res.data
-//     }catch(err){
-//       console.log(err)
-//     }
-//   }
-//   else{
-//      try{
-//       const res = await axios.get( `${API_URL}movie/${movieId}?api_key=${KEY}&language=en-US`)
-//       return res.data
-//     }catch(err){
-//       console.log(err)
-//     }
-//   }
-// }
-
-  //   const getMovie= async(id: number)  =>{
-  //     if(type === ''){
-  //       const res = await axios.get( `${API_URL}movie/${id}?api_key=${KEY}&language=en-US`)
-  //        return res.data
-  //     }
-  //    try{
-      
-  //       const res = await axios.get(type ==='movies' ? `${API_URL}movie/${id}?api_key=${KEY}&language=en-US`: `${API_URL}tv/${id}?api_key=${KEY}&language=en-US`)
-  //        return res.data
-  //    }catch(err){
-  //      console.log(err)
-  //    }
-  //  }
-
-
-  // const getVideo = async(id: number): Promise<Video> => {
-  //   const vid = await axios.get(type === 'movies' ?`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${KEY}&language=en-US`: `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${KEY}&language=en-US`)
-       
-  //     return vid.data.results[0]
-  // }
-  // console.log(movies && movies)
-  // useEffect(() => {
-  //     getMovies()
-  // },[type])
 
   const handleSlide = (dir: string) => {
     if (null !== wrapperRef.current){

@@ -29,6 +29,13 @@ export type Movies = {
   total_results: number;
 };
 
+export type Video ={
+  site: string;
+  type: string;
+  key: string;
+  id: string;
+}
+
 export const fetchPopular = async(type : String, page : number): Promise<Movies>=> {
 
     const res = await axios.get(type ==='movies' ? `${POPULAR_MOVIES_URL}&page=${page}`: `${POPULAR_SERIES_URL}&page=${page}`)
@@ -46,3 +53,11 @@ export const fetchMovie = async(movieId: number) => {
   return await axios.get(`https://api.themoviedb.org/3/tv/${movieId}?api_key=${KEY}>>&language=en-US`)
 }
 
+export const getVideo = async(type: string, id: string): Promise<Video> => {
+  const res = await axios.get(type === 'movies' ?`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${KEY}&language=en-US`: `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${KEY}&language=en-US`)
+       
+  
+  return res.data.results[3] || res.data.results[0]
+}
+
+ 

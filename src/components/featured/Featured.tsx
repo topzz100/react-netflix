@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { fetchPopular, Movie } from '../../API';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -86,7 +87,7 @@ const Featured = () => {
         {/* <img src="https://upload.wikimedia.org/wikipedia/fr/d/d1/Logo_Matrix_Resurrections.png" alt="" /> */}
         <h3 className='title'>
           {
-            type==='movies'? movie?.original_title: movie?.original_name
+            movie?.original_title || movie?.original_name
           }
         </h3>
         <span className="desc">
@@ -95,12 +96,14 @@ const Featured = () => {
           }
         </span>
         <div className="buttons">
+          <Link to={`/video/${movie?.id}`}>
           <button className='play'>
             <i className="fa-solid fa-play"></i>
             <span>
               Play
             </span>
           </button>
+          </Link>
           <button className='info'>
             <i className="fa-solid fa-circle-info"></i>
             <span>

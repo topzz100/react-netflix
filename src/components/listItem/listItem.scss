@@ -1,14 +1,17 @@
 .listItem{
   width: 230px;
-  height: 150px;
+  height: 140px;
   margin-right: 10px;
   background-color: white;
   position: relative;
   //overflow: hidden;
-  
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
   .item{
     width: 230px;
-    height: 150px;
+    height: 140px;
     transition: all 0.5s ease;
     transform-origin: bottom;
     img{
@@ -32,12 +35,12 @@
       .item{
 
         height: 320px;
-        width: 350px;
+        width: 330px;
         position: absolute;
         bottom: -50px;
         left: 0;
         z-index: 55555;
-        transform: translateX(-60px);
+        transform: translateX(-50px);
         background-color: var(--main-color);
         box-shadow: 2px 3px 8px 5px rgba(89, 72, 72, 1);
           -webkit-box-shadow: 2px 3px 8px 5px rgba(89, 72, 72, 1);
@@ -45,7 +48,7 @@
   
       img {
         width: 100%;
-        height: 150px;
+        height: 140px;
         object-fit: cover;
       }
       video{
@@ -121,12 +124,18 @@
         }
   
         p {
-          margin-top: 10n px;
+          margin-top: 5px;
           color: white;
           font-size: 0.8rem;
         }
         .genre{
-          margin-top: 15px;
+          span{
+            margin-right: 5px;
+            font-size: 0.7rem;
+          }
+        }
+        .overview{
+          font-size: 0.7rem;
         }
       }
 

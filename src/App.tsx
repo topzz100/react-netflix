@@ -19,7 +19,7 @@ function App() {
           <Route path='/series' element={<Home/>}/>
           <Route path='login' element={<Login/>}/>
           <Route path='register' element={<Register/>}/>
-          <Route path='watch' element={<Watch/>}/>
+          <Route path='video/:id' element={<Watch/>}/>
         </Routes>
       </BrowserRouter>
     </div>

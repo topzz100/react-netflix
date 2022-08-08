@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Movie } from '../../API'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
@@ -48,14 +49,6 @@ const ListItem: React.FC<Props> = ({id }) => {
   // console.log(id)
 //   const fetchMovie = async( type: String, movieId: number) => {
 const fetchMovie = async( type: String, movieId: number) => {
-  if(type === ''){
-    try{
-      const res = await axios.get( `${API_URL}movie/${movieId}?api_key=${KEY}&language=en-US`) 
-      setDetails(res.data)
-    }catch(err){
-      console.log(err)
-    }
-  }
   if(type === 'movies'){
     try{
       const res = await axios.get( `${API_URL}movie/${movieId}?api_key=${KEY}&language=en-US`)
@@ -134,45 +127,39 @@ const fetchMovie = async( type: String, movieId: number) => {
         {/* <video src="/assets/dance.mp4" autoPlay muted loop></video> */}
        
         <div className="more">
-          <div className="icons">
-            <i className="fa-solid fa-play icon" ></i>
+          <div className="icons"> 
+            <Link to={`/video/${details?.id}`}>
+              <i className="fa-solid fa-play icon" ></i>
+            </Link>
+            
             <i className="fa-solid fa-plus icon"></i>
             <i className="fa-solid fa-thumbs-up icon"></i>
             <i className="fa-solid fa-thumbs-down icon"></i>
           </div>
           {
-              type === 'movies'?
-              ( 
+             
              
               <>
-                <h5>{details?.original_title}</h5>
+                <h5>{details?.original_title || details?.original_name}</h5>
                 <div className="info">
-                  <span >{details?.runtime} minutes</span>
+                  <span >{details?.runtime || details?.episode_run_time} minutes</span>
                   {/* <span>{details?.release_date.substring(0, 4)}</span> */}
                 </div>
                 </>
-              ):
-              (
-              
-                <>
-                  <h5>{details?.original_name}</h5>
-                  <div className="info">
-                    <span>{details?.episode_run_time} minutes</span>
-                    {/* <span >{details?.first_air_date.slice(0,4)}</span> */}
-                  </div>
-                </>
-              )
+         
             
         } 
           {/* </div> */}
           
-          <p>{details && details.overview.substring(0, 100)}...</p> 
-           <p>{movie && movie.overview.substring(0, 100)}...</p>
+          <p className="overview">{details && details.overview.substring(0, 120)}...</p> 
           <p className="genre">{
-            details?.genres.splice(2).map((gen) => (
+            details?.genres.slice(0, 2).map((gen) => (
               <span key={gen.id}>{gen.name}</span>
             ))
           }</p>
+          {/* <p className="genre">
+              {details?.genres[0].name}
+          </p> */}
         </div>
         
       </div>
