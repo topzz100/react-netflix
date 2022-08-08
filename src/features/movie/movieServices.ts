@@ -13,6 +13,10 @@ const fetchPopular = async(type : String) => {
   }
     // const res = await axios.get(type ==='movies' ? `${POPULAR_MOVIES_URL}&page=1`: `${POPULAR_SERIES_URL}&page=1`)
     // return res.data.results.slice(10)
+      else {
+    const res = await axios.get(`${POPULAR_MOVIES_URL}&page=1`)
+    return res.data.results.slice(10)
+  }
  
 }
 
@@ -51,6 +55,9 @@ const fetchTrending = async(type : String)=> {
   }
   if(type === 'series'){
     const res = await axios.get( `${TOP_RATED_SERIES}&page=1`)
+    return res.data.results.slice(10)
+  }else{
+    const res = await axios.get(`${TOP_RATED_MOVIES}&page=1`)
     return res.data.results.slice(10)
   }
 
