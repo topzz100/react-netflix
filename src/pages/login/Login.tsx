@@ -25,6 +25,7 @@ const Login = () => {
       });
     }
   }
+
   return (
     <div className='login'>
       <div className="top">
@@ -35,12 +36,21 @@ const Login = () => {
           <h4>
             Sign In
           </h4>
-            <input type="text" placeholder='email or phone number' ref={emailRef}/>
-          <input type="password" name="" id="" placeholder='password' ref={passwordRef}/>
-          <button onClick={handleLogin}>Sign In</button>
-         
-          
-          <p>NLw to Netflix? <b>Sign up now.</b></p>
+          <input 
+            type="text" 
+            placeholder='email or phone number' 
+            ref={emailRef}
+          />
+          <input 
+            type="password" 
+            placeholder='password' 
+            ref={passwordRef}
+          />
+          <button  onClick={handleLogin}>
+            Sign In
+          </button>
+                  
+          <p>New to Netflix? <b>Sign up now.</b></p>
           <p>This page is protected by Google reCAPTCHA to ensure you are not a bot. <b>Learn more</b></p>
         </form>
       </div>

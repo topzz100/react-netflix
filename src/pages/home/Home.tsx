@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
 import { useAppDispatch } from '../../app/hooks'
 import Featured from '../../components/featured/Featured'
 import List from '../../components/list/List'
@@ -11,7 +10,6 @@ const Home = () => {
   const pathname = window.location.pathname
   const type = pathname.split('/')[1]
   const dispatch= useAppDispatch()
-  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(updateType(type))
@@ -23,9 +21,7 @@ const Home = () => {
       <Navbar/>
       <Featured /> 
       <List  title='Popular on Netflix' category ='popular'/>
-       <List title='Trending' category ='trending' /> 
-      {/* <List title='Popular on Netflix' category ='popular'/>  */}
-      {/* <List/> */}
+      <List title='Trending' category ='trending' /> 
       
     </div>
   )
