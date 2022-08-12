@@ -21,7 +21,7 @@ const Navbar = () => {
             <span>Series</span>
           </Link>
           <Link to={'/movies'}>
-            <span>Movies</span>
+            <span role='movieLink'>Movies</span>
           </Link>
           <span>New and Popular</span>
           <span>My List</span>        
