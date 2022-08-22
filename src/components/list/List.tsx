@@ -57,10 +57,10 @@ const List: React.FC<Props> = ({title, category}) => {
   }
   return (
     <div className='list'>
-      <h4>{title}</h4>
+      <h4 role="headingTitle">{title}</h4>
       <div className="container">
         {count !== 0 && 
-          <i className="fa-solid fa-chevron-left left" onClick={() => handleSlide('left')}></i>
+          <i className="fa-solid fa-chevron-left left" onClick={() => handleSlide('left')} role= 'directionLeft'></i>
         } 
         <div className="wrapper" ref={wrapperRef}>
 
@@ -72,7 +72,7 @@ const List: React.FC<Props> = ({title, category}) => {
      
         </div>
         {count !== 5 && 
-          <i className="fa-solid fa-chevron-right right" onClick={() => handleSlide('right')}></i>
+          <i className="fa-solid fa-chevron-right right" onClick={() => handleSlide('right')} role= 'directionRight'></i>
         }
       </div>
     </div>

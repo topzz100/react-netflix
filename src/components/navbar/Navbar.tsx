@@ -10,7 +10,7 @@ const Navbar = () => {
   
    console.log(isScroll)
   return (
-    <div className={isScroll? 'navbar scroll' : 'navbar'}>
+    <div className={isScroll? 'navbar scroll' : 'navbar'} role ='navMenu'>
       <div className="left">
         <img src="https://cloudfront-us-east-1.images.arcpublishing.com/gray/3HCWZMP7PFGY3OJJPFHIX5O2VI.png" alt="" />
         <div className="nav-menu">
@@ -21,7 +21,7 @@ const Navbar = () => {
             <span>Series</span>
           </Link>
           <Link to={'/movies'}>
-            <span role='movieLink'>Movies</span>
+            <span>Movies</span>
           </Link>
           <span>New and Popular</span>
           <span>My List</span>        

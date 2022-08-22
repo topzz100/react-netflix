@@ -28,7 +28,7 @@ const Featured = () => {
   }, [ popularMovie ]) 
 
   return (
-    <div className='featured' role='featuredContainer'>
+    <div className='featured'>
       {
         type &&
         <div className="type">

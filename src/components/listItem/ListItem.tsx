@@ -48,13 +48,13 @@ const ListItem: React.FC<Props> = ({id }) => {
 
 
   return (
-    <div className='listItem' role='itemContainer'>
+    <div className='listItem' role= "listContainer">
       <div className="item">
       
-       <img src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}/${details?.backdrop_path}` } role='imgContent' alt="" />
+       <img src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}/${details?.backdrop_path}`} role = "itemImage" alt="" />
       
        
-        <div className="more" role='moreInfo'>
+        <div className="more">
           <div className="icons"> 
             <Link to={`/video/${details?.id}`}>
               <i className="fa-solid fa-play icon" ></i>
