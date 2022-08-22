@@ -34,7 +34,7 @@ afterAll(() => server.close())
     const rightdirection = screen.getByRole('directionRight')
     //click
     //show left direction 
-    expect(rightdirection).toBeIn()
+    expect(rightdirection).toBeInTheDocumentP()
   })
 
   //  test('display name of movie', async() => {
